@@ -75,7 +75,7 @@ pipeline {
 
    post {
        always {
-           node {
+           script {
                echo 'Cleaning up...'
                sh '''
                    docker rmi ${IMAGE_NAME}:${BUILD_NUMBER} || true
