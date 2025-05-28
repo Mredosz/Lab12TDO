@@ -4,7 +4,7 @@
   "main": "app/index.js",
   "scripts": {
     "start": "node app/index.js",
-    "test": "jest --coverage",
+    "test": "jest --coverage --reporters=default --reporters=jest-junit",
     "lint": "eslint ."
   },
   "dependencies": {
