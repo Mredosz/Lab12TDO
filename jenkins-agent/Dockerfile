@@ -1,21 +1,22 @@
-FROM jenkins/inbound-agent:alpine-jdk-17
+FROM jenkins/agent
 
 USER root
 
-RUN apk add --no-cache \
+RUN apt-get update && \
+    apt-get install -y \
     bash \
     git \
     curl \
     jq \
-    docker \
+    docker.io \
     nodejs \
-    npm
+    npm \
+    && \
+    apt-get clean
 
 RUN npm install -g \
     eslint \
     jest \
     supertest
-
-RUN addgroup -S docker && adduser jenkins docker
 
 USER jenkins
