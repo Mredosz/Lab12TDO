@@ -1,26 +1,17 @@
-module.exports = [
+export default [
     {
-        files: ['**/*.js'],
+        files: ["**/*.js"],
         languageOptions: {
-            ecmaVersion: 2022,
-            sourceType: 'commonjs',
+            ecmaVersion: "latest",
+            sourceType: "module",
             globals: {
-                require: 'readonly',
-                module: 'readonly',
-                process: 'readonly',
-                __dirname: 'readonly',
-                describe: 'readonly',
-                it: 'readonly',
-                expect: 'readonly',
-                test: 'readonly',
-            },
-        },
-        linterOptions: {
-            reportUnusedDisableDirectives: true,
+                console: "readonly",
+                env: {
+                    node: true
+                }
+            }
         },
         rules: {
-            'no-unused-vars': 'warn',
-            'no-undef': 'error'
-        }
-    }
+        },
+    },
 ];
