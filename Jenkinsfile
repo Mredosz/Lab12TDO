@@ -73,20 +73,22 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            echo 'Cleaning up...'
-            sh '''
-                docker rmi ${IMAGE_NAME}:${BUILD_NUMBER} || true
-                docker rmi ${IMAGE_NAME}:latest || true
-                docker logout
-            '''
-        }
-        success {
-            echo '✅ Build and deploy completed successfully.'
-        }
-        failure {
-            echo '❌ Build failed.'
-        }
-    }
+   post {
+       always {
+           node {
+               echo 'Cleaning up...'
+               sh '''
+                   docker rmi ${IMAGE_NAME}:${BUILD_NUMBER} || true
+                   docker rmi ${IMAGE_NAME}:latest || true
+                   docker logout
+               '''
+           }
+       }
+       success {
+           echo '✅ Build and deploy completed successfully.'
+       }
+       failure {
+           echo '❌ Build failed.'
+       }
+   }
 }
