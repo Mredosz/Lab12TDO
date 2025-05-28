@@ -1,9 +1,9 @@
-export default [
+module.exports = [
     {
         files: ['**/*.js'],
         languageOptions: {
             ecmaVersion: 2022,
-            sourceType: 'module',
+            sourceType: 'commonjs',
             globals: {
                 require: 'readonly',
                 module: 'readonly',
@@ -23,4 +23,4 @@ export default [
             'no-undef': 'error'
         }
     }
-]
+];
