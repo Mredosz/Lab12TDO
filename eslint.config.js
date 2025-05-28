@@ -7,10 +7,10 @@ export default [
             globals: {
                 console: "readonly",
             },
-            env: {
-                browser: true,
-                node: true,
-            }
+        },
+        env: {
+            browser: true,
+            node: true,
         },
         rules: {
         },
