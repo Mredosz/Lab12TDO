@@ -6,11 +6,13 @@ export default [
             sourceType: "module",
             globals: {
                 console: "readonly",
+                window: "readonly",
+                document: "readonly",
+                navigator: "readonly",
+                process: "readonly",
+                Buffer: "readonly",
+                __dirname: "readonly",
             },
-        },
-        env: {
-            browser: true,
-            node: true,
         },
         rules: {
         },
