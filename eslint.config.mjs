@@ -8,20 +8,7 @@ export default defineConfig([
     plugins: { js },
     extends: ["js/recommended"],
     languageOptions: {
-      globals: globals.node,
-      env: {
-        node: true,
-      },
-    },
-  },
-  {
-    files: ["tests/**/*.js"],
-    languageOptions: {
-      globals: { ...globals.node, ...globals.mocha },
-      env: {
-        node: true,
-        mocha: true,
-      },
+      globals: globals.browser,
     },
   },
 ]);
