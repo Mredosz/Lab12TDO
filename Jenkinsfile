@@ -19,6 +19,12 @@ pipeline {
             }
         }
 
+        stage('Install dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
         stage('Lint') {
             steps {
                 sh 'npm run lint'
@@ -73,22 +79,27 @@ pipeline {
         }
     }
 
-   post {
-       always {
-           script {
-               echo 'Cleaning up...'
-               sh '''
-                   docker rmi ${IMAGE_NAME}:${BUILD_NUMBER} || true
-                   docker rmi ${IMAGE_NAME}:latest || true
-                   docker logout
-               '''
-           }
-       }
-       success {
-           echo '✅ Build and deploy completed successfully.'
-       }
-       failure {
-           echo '❌ Build failed.'
-       }
-   }
+    post {
+        always {
+            script {
+                echo 'Cleaning up...'
+                def dockerAvailable = sh(script: "which docker", returnStatus: true) == 0
+                if (dockerAvailable) {
+                    sh """
+                        docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER} || true
+                        docker rmi ${IMAGE_NAME}:latest || true
+                        docker logout || true
+                    """
+                } else {
+                    echo "Docker CLI nie jest dostępny, pomijam cleanup dockerowy."
+                }
+            }
+        }
+        success {
+            echo '✅ Build and deploy completed successfully.'
+        }
+        failure {
+            echo '❌ Build failed.'
+        }
+    }
 }
