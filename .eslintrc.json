@@ -1,17 +1,9 @@
 {
   "env": {
     "node": true,
-    "es2021": true
+    "jest": true
   },
-  "extends": ["eslint:recommended"],
-  "overrides": [
-    {
-      "files": ["tests/**/*.js", "**/*.test.js"],
-      "env": {
-        "jest": true
-      }
-    }
-  ],
+  "extends": "eslint:recommended",
   "rules": {
   }
 }
