@@ -6,9 +6,10 @@ export default [
             sourceType: "module",
             globals: {
                 console: "readonly",
-                env: {
-                    node: true
-                }
+            },
+            env: {
+                browser: true,
+                node: true,
             }
         },
         rules: {
