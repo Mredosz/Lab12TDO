@@ -96,10 +96,10 @@ pipeline {
             }
         }
         success {
-            echo '✅ Build and deploy completed successfully.'
+            echo 'Build and deploy completed successfully.'
         }
         failure {
-            echo '❌ Build failed.'
+            echo 'Build failed.'
         }
     }
 }
