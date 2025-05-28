@@ -3,7 +3,5 @@
     "node": true,
     "jest": true
   },
-  "extends": "eslint:recommended",
-  "rules": {
-  }
+  "extends": "eslint:recommended"
 }
